@@ -14,6 +14,4 @@ Coming soon. We're waiting for a code review results from the official MEGA team
 ```
 
 ### Contact
-https://megadesktop.uservoice.com
-
-mailto:megadesktop@lavabit.com
+https://megadesktop.uservoice.com | megadesktop@lavabit.com | [@Mega_Desktop](https://twitter.com/Mega_Desktop)
