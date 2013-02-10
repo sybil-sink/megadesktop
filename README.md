@@ -6,6 +6,7 @@ This is an app to upload and download files from Mega.co.nz
 ### Features
 - Large file support
 - Music/Movie streaming (Coming soon!)
+- .NET API for you to integrate!
 
 ### Download
 ```
