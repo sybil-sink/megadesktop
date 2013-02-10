@@ -10,3 +10,4 @@ Coming soon.
 
 ### Contact
 https://megadesktop.uservoice.com
+mailto:megadesktop@lavabit.com
