@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaDesktop", "MegaDesktop\MegaDesktop.csproj", "{78D77BE5-E21C-4D27-B153-36DAA7A813CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaApi", "..\mega-sdk\MegaApi\MegaApi.csproj", "{E38721B9-BDB2-4BA8-BCB8-35821267BE59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78D77BE5-E21C-4D27-B153-36DAA7A813CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78D77BE5-E21C-4D27-B153-36DAA7A813CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78D77BE5-E21C-4D27-B153-36DAA7A813CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78D77BE5-E21C-4D27-B153-36DAA7A813CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E38721B9-BDB2-4BA8-BCB8-35821267BE59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E38721B9-BDB2-4BA8-BCB8-35821267BE59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E38721B9-BDB2-4BA8-BCB8-35821267BE59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E38721B9-BDB2-4BA8-BCB8-35821267BE59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
