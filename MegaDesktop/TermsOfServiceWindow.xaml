@@ -1,0 +1,12 @@
+﻿<Window x:Class="MegaDesktop.TermsOfServiceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MEGA Terms of Service" Height="400" Width="600" Icon="pack://application:,,,/megadesktop.ico">
+    <Grid Loaded="Grid_Loaded_1">
+        <WebBrowser HorizontalAlignment="Left" Height="285" Margin="10,49,0,0" VerticalAlignment="Top" Width="574" x:Name="TosBrowser"/>
+        <Button x:Name="AcceptTos" Content="Accept" HorizontalAlignment="Left" Margin="429,339,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" Click="AcceptTos_Click"/>
+        <Button x:Name="DeclineTos" Content="Decline" HorizontalAlignment="Left" Margin="509,340,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Click="DeclineTos_Click"/>
+        <Label Content="Please accept these Terms of Service before continuing" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+
+    </Grid>
+</Window>
