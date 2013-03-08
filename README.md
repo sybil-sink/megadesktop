@@ -9,10 +9,7 @@ This is an app to upload and download files from Mega.co.nz
 - [.NET API](https://github.com/sybil-sink/mega-sdk)
 
 ### Download
-```
-Coming soon. We're waiting for a code review results from the official MEGA team before releasing.
-The SDK is already up, though.
-```
+http://megadesktop.com/files/MegaDesktopBeta1.zip (BETA!)
 
 ### Contact
-megadesktop@lavabit.com | [@Mega_Desktop](https://twitter.com/Mega_Desktop)
+[UserVoice](http://megadesktop.uservoice.com/forums/191321-general) | megadesktop@lavabit.com | [@Mega_Desktop](https://twitter.com/Mega_Desktop)
