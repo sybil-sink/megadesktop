@@ -1,7 +1,9 @@
 ### Mega Desktop
 
 ### Hi there!
-This is an app to upload and download files from Mega.co.nz
+Mega Desktop is a Windows client for Mega.co.nz service. 
+Currently we support anonymous and registered Mega's accounts and simple uploading/downloading files.
+The dropbox-like synchronization coming this week. [Follow us](https://twitter.com/Mega_Desktop) for the fresh news!
 
 ### Features
 - Large file support
