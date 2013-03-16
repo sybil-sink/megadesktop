@@ -126,7 +126,7 @@ li { margin-bottom: .5em}
 .github2 .header {text-align: center; margin-bottom: .3em}
 .github2 .header2 {font-size: 1.5em; margin-bottom: 20px}
 .github2 a {background-image:  url("img/gh2.png")}
-.github2 li{font-weight: 300}
+.github2 li{}
 .contacts{background:#1B1B1D;}
 .contacts h3 {margin-top: 3em}
 .contacts li a{text-decoration: none}
@@ -140,6 +140,7 @@ li { margin-bottom: .5em}
 }
 .cop div
 {
+	font-weight: 300;
 	line-height: 1.2em;
 	padding: 4.5em 1em 0 1em;
 }
