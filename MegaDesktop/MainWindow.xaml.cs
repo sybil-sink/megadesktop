@@ -102,7 +102,7 @@ namespace MegaWpf
         private void InitialLoadNodes()
         {
             Invoke(() => listBoxDownloads.ItemsSource = transfers);
-            SetStatus("Retriving the list of files...");
+            SetStatus("Retrieving the list of files...");
             api.GetNodes((list) =>
             {
                 Invoke(() =>
@@ -244,18 +244,13 @@ namespace MegaWpf
                 api.UploadFile(currentNode.Id, d.FileName, (h) =>
                 {
                     Invoke(() => transfers.Add(h));
-                    h.StatusChanged += (s, ev) =>
+                    h.PropertyChanged += (s, ev) =>
                     {
-                        if (h.Status == TransferHandleStatus.Success)
-                        {
-                            ShowFiles(currentNode, true);
-                        }
+                        h.TransferEnded+=(s1,e1)=>ShowFiles(currentNode, true);
                     };
                     SetStatusDone();
 
                 }, err => SetStatusError(err));
-
-
             }
         }
 
@@ -266,7 +261,7 @@ namespace MegaWpf
             var text = String.Format("Are you sure to delete the {0} {1}?", type, node.Attributes.Name);
             if (MessageBox.Show(text, "Deleting " + type, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                api.RemoveNode(node, () => ShowFiles(currentNode, true), err => SetStatusError(err));
+                api.RemoveNode(node.Id, () => ShowFiles(currentNode, true), err => SetStatusError(err));
             }
         }
 
@@ -318,7 +313,6 @@ namespace MegaWpf
 
         private void buttonRefresh_Click(object sender, RoutedEventArgs e)
         {
-            //api.CreateFolder(currentNode.Id, "testtest", () => { }, (i) => { });
             ShowFiles(currentNode, true);
         }
         private void buttonLogout_Click(object sender, RoutedEventArgs e)
@@ -332,7 +326,7 @@ namespace MegaWpf
             var userAccount = GetUserKeyFilePath();
             // to restore previous anon account
             //File.Move(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(userAccount), "user.anon.dat"), userAccount);
-            // simply drop logged in account
+            // or simply drop logged in account
             File.Delete(userAccount);
             Login(false, userAccount);
         }
@@ -371,6 +365,11 @@ namespace MegaWpf
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Process.Start("http://megadesktop.com/");
+        }
+
+        private void buttonTrySync_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("MegaSync.exe");
         }
     }
 }

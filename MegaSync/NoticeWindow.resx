@@ -117,8 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="m" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\m.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>This is a preliminary alpha version of the Sync application.
+
+The sync engine is still in development. PLEASE BACK UP ALL IMPORTANT FILES BEFORE SYNCHING!
+
+If the sync engine removes files from your computer, check out your Recycle Bin - they should be there.
+
+Please report any issues to http://uservoice.megadesktop.com or team@megadesktop.com.
+
+- The Mega Desktop Team.</value>
   </data>
 </root>
