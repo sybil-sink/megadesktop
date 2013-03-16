@@ -1,0 +1,147 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+body {
+	background: #0A0A0C url("img/bg.png") top center no-repeat;
+	font-family: 'Lato', sans-serif;
+	color: #fff;
+}
+img, a {outline: none}
+.content {width: 750px; margin: 100px auto 125px auto; background:#0A0A0B;}
+.cb {clear: both}
+.sq {height: 250px; width: 250px; float: left;}
+.sq2 {height: 50%; width: 50%; float: left;}
+.text {padding: 25px}
+.btext {padding: 15px}
+.button a
+{
+	display: block; 
+	text-decoration: none; 
+	color: #fff; 
+	height: 100%; 
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: 0;
+}
+.button a:hover{background-position: -250px;}
+.button a:hover .header{text-decoration: underline;}
+
+.head
+{
+	background: #0A0A0C;
+	background: -moz-linear-gradient(top, #19191b 0%, #0a0a0c 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#19191b), color-stop(100%,#0a0a0c));
+	background: -webkit-linear-gradient(top, #19191b 0%,#0a0a0c 100%);
+	background: -o-linear-gradient(top, #19191b 0%,#0a0a0c 100%);
+	background: -ms-linear-gradient(top, #19191b 0%,#0a0a0c 100%);
+	background: linear-gradient(to bottom, #19191b 0%,#0a0a0c 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#19191b', endColorstr='#0a0a0c' ,GradientType=0 ); 
+}
+.logo{background: #89090A; }
+.tagline
+{
+	padding-left: 25px;
+	float: left;
+}
+h1 {font-size: 4.2em; padding-top: 50px}
+h2 {font-weight: 300; font-size: 2.2em; margin-top: 12px}
+h2 a{text-decoration: none; color: #fff}
+li a{color: #fff}
+h2 a:hover{text-decoration: underline;}
+h3, .button .header{font-size: 1.5em; line-height: 1.2em; margin-bottom: .5em}
+ul {list-style-type: disc; padding-left: 1em}
+li { margin-bottom: .5em}
+
+.c1 .t1{background: #171719;}
+.c1 .t2{background: #202022;}
+.c1 .t3{background: #1A1A1C;}
+.c1 .t4{background: #1C1C1E;}
+.promo{background:#161618;}
+.promo strong{font-size: 1.6em;}
+.download {background: #09670F;}
+.download a {background-image:  url("img/dl.png")}
+.github {background: #183E5A;}
+.github a {background-image:  url("img/gh.png")}
+.features{background:#212121;}
+.c2 .t1{background: #232325;}
+.c2 .t2{background: #1A1A1C;}
+.c2 .t3{background: #1F1F21;}
+.c2 .t4{background: #1D1D1F;}
+.coming 
+{
+	position: absolute; 
+	color: #676767; 
+	font-size: 2em; 
+	height: 250px;
+	width: 250px;
+	padding: 208px 0 0 15px;
+}
+.shot .hidden{display: none}
+.features2{background:#19191B;}
+.c3 .t1{background: #161616;}
+.c3 .t2{background: #222224;}
+.c3 .t3{background: #18181A;}
+.c3 .t4{background: #1E1E20;}
+.shot{}
+.github2 {background: #183E5A;}
+.github2 .header {text-align: center; margin-bottom: .3em}
+.github2 .header2 {font-size: 1.5em; margin-bottom: 20px}
+.github2 a {background-image:  url("img/gh2.png")}
+.github2 li{font-weight: 300}
+.contacts{background:#1B1B1D;}
+.contacts h3 {margin-top: 3em}
+.contacts li a{text-decoration: none}
+.contacts li a:hover{text-decoration: underline;}
+.c4 .t1{background: #1D1D1F;}
+.c4 .t2{background: #1B1B1B;}
+.cop
+{
+	background: #202022; 
+	width: 100%; 
+}
+.cop div
+{
+	font-weight: 300;
+	line-height: 1.2em;
+	padding: 4.5em 1em 0 1em;
+}
+.cop div a{color: #fff}
