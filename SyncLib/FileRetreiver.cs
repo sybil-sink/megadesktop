@@ -13,7 +13,7 @@ namespace SyncLib
         {
             get { throw new NotImplementedException("Absolute Path Not Supported"); }
         }
-         
+
         Func<Stream> getStreamFn;
         public FileRetriever(Func<Stream> getStreamFn)
         {

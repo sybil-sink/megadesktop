@@ -7,7 +7,7 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Mega Desktop")]
+[assembly: AssemblyTitle("Mega Desktop 0.71b")]
 [assembly: AssemblyDescription("Unofficial Windows Desktop client for Mega.co.nz")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("megadesktop.com")]

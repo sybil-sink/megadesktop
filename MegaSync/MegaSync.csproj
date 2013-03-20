@@ -91,7 +91,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\mega-sdk\MegaApi\MegaApi.csproj">
+    <ProjectReference Include="..\MegaApi\MegaApi.csproj">
       <Project>{e38721b9-bdb2-4ba8-bcb8-35821267be59}</Project>
       <Name>MegaApi</Name>
     </ProjectReference>

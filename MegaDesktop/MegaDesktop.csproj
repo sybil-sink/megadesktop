@@ -114,6 +114,12 @@
     <SplashScreen Include="Resources\splash.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MegaApi\MegaApi.csproj">
+      <Project>{e38721b9-bdb2-4ba8-bcb8-35821267be59}</Project>
+      <Name>MegaApi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resources\download.png" />
     <Resource Include="Resources\login.png" />
     <Resource Include="Resources\logout.png" />
@@ -126,12 +132,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="m.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\mega-sdk\MegaApi\MegaApi.csproj">
-      <Project>{e38721b9-bdb2-4ba8-bcb8-35821267be59}</Project>
-      <Name>MegaApi</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

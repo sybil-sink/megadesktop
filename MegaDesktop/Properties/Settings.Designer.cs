@@ -35,5 +35,17 @@ namespace MegaDesktop.Properties {
                 this["TosAccepted"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("000")]
+        public string FirstRunLatestVer {
+            get {
+                return ((string)(this["FirstRunLatestVer"]));
+            }
+            set {
+                this["FirstRunLatestVer"] = value;
+            }
+        }
     }
 }

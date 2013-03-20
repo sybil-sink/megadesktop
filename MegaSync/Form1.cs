@@ -5,6 +5,7 @@ using MegaApi;
 using SyncLib;
 using System.Threading;
 using System.Diagnostics;
+using MegaApi.Comms;
 
 namespace MegaSync
 {
@@ -16,16 +17,6 @@ namespace MegaSync
         public Form1()
         {
             InitializeComponent();
-
-            //AppDomain.CurrentDomain.UnhandledException += (s, e) =>
-            //    {
-            //        Invoke(new Action(() =>
-            //            {
-            //                notifyIcon1.ShowBalloonTip(500, "Mega Sync", "Internal error", new ToolTipIcon());
-            //                Show();
-            //                WindowState = FormWindowState.Normal;
-            //            }));
-            //    };
 
             System.Net.ServicePointManager.DefaultConnectionLimit = 50;
             notifyIcon1.Icon = Properties.Resources.min;
@@ -160,6 +151,7 @@ namespace MegaSync
                 {
                     notifyIcon1.ShowBalloonTip(60000, "Synchronization Error", e.Message + "\r\n" + e.Exception.Message, ToolTipIcon.Error);
                 }));
+                GoogleAnalytics.SendTrackingRequest("/SyncError");
             };
             sync.SyncEnded += (s, e) =>
             {
@@ -214,6 +206,27 @@ namespace MegaSync
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://megadesktop.com/");
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CheckFirstRun();
+        }
+
+        private void CheckFirstRun()
+        {
+            if (MegaSync.Properties.Settings.Default.FirstRunLatestVer !=
+                GoogleAnalytics.AppVersion)
+            {
+                GoogleAnalytics.SendTrackingRequest("FirstRun_Sync");
+                MegaSync.Properties.Settings.Default.FirstRunLatestVer =
+                GoogleAnalytics.AppVersion;
+                MegaSync.Properties.Settings.Default.Save();
+            }
+            else
+            {
+                GoogleAnalytics.SendTrackingRequest("Run_Sync");
+            }
         }
     }
 }

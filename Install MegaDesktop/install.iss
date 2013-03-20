@@ -1,6 +1,6 @@
 [Setup]
 AppName=Mega Desktop
-AppVersion=0.7
+AppVersion=0.71
 DefaultDirName={pf}\Mega Desktop
 DefaultGroupName=Mega Desktop
 UninstallDisplayIcon={app}\MegaDesktop.exe
@@ -18,11 +18,11 @@ Source: Synchronization-v2.1-x64-ENU.msi; DestDir: {tmp}; Flags: deleteafterinst
 Source: Synchronization-v2.1-x86-ENU.msi; DestDir: {tmp}; Flags: deleteafterinstall;
 Source: ProviderServices-v2.1-x64-ENU.msi; DestDir: {tmp}; Flags: deleteafterinstall;
 Source: ProviderServices-v2.1-x86-ENU.msi; DestDir: {tmp}; Flags: deleteafterinstall; 
-Source: "MegaDesktop.exe"; DestDir: "{app}"; BeforeInstall: BeforeInstall()
-Source: "MegaApi.dll"; DestDir: "{app}"
-Source: "MegaSync.exe"; DestDir: "{app}"
-Source: "Newtonsoft.Json.dll"; DestDir: "{app}"
-Source: "SyncLib.dll"; DestDir: "{app}"
+Source: "MegaDesktop.exe"; DestDir: "{app}"; BeforeInstall: BeforeInstall(); Flags: ignoreversion;
+Source: "MegaApi.dll"; DestDir: "{app}"; Flags: ignoreversion;
+Source: "MegaSync.exe"; DestDir: "{app}"; Flags: ignoreversion;
+Source: "Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion;
+Source: "SyncLib.dll"; DestDir: "{app}"; Flags: ignoreversion;
 
 [Icons]
 Name: "{group}\Mega Desktop"; Filename: "{app}\MegaDesktop.exe";

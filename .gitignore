@@ -113,3 +113,6 @@ Install MegaDesktop/ProviderServices-v2.1-x86-ENU.msi
 Install MegaDesktop/Synchronization-v2.1-x64-ENU.msi
 Install MegaDesktop/Synchronization-v2.1-x86-ENU.msi
 *.orig
+Install MegaDesktop/*.dll
+Install MegaDesktop/*.exe
+Install MegaDesktop/Output/*

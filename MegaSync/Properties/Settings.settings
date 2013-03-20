@@ -11,5 +11,8 @@
     <Setting Name="AlphaNoticeAccepted" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="FirstRunLatestVer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">000</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

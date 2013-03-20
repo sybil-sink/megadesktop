@@ -47,26 +47,29 @@
             // 
             // textBoxFolder
             // 
-            this.textBoxFolder.Location = new System.Drawing.Point(12, 25);
+            this.textBoxFolder.Location = new System.Drawing.Point(16, 31);
+            this.textBoxFolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxFolder.Name = "textBoxFolder";
-            this.textBoxFolder.Size = new System.Drawing.Size(260, 20);
+            this.textBoxFolder.Size = new System.Drawing.Size(345, 22);
             this.textBoxFolder.TabIndex = 0;
             this.textBoxFolder.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(16, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(83, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Sync folder:";
             // 
             // buttonBrowse
             // 
-            this.buttonBrowse.Location = new System.Drawing.Point(278, 22);
+            this.buttonBrowse.Location = new System.Drawing.Point(371, 27);
+            this.buttonBrowse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonBrowse.Name = "buttonBrowse";
-            this.buttonBrowse.Size = new System.Drawing.Size(75, 23);
+            this.buttonBrowse.Size = new System.Drawing.Size(100, 28);
             this.buttonBrowse.TabIndex = 2;
             this.buttonBrowse.Text = "Browse...";
             this.buttonBrowse.UseVisualStyleBackColor = true;
@@ -75,42 +78,47 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 62);
+            this.label2.Location = new System.Drawing.Point(12, 76);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(46, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Email:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(183, 62);
+            this.label3.Location = new System.Drawing.Point(244, 76);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 13);
+            this.label3.Size = new System.Drawing.Size(73, 17);
             this.label3.TabIndex = 4;
             this.label3.Text = "Password:";
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(12, 78);
+            this.textBoxEmail.Location = new System.Drawing.Point(16, 96);
+            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(167, 20);
+            this.textBoxEmail.Size = new System.Drawing.Size(221, 22);
             this.textBoxEmail.TabIndex = 3;
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(186, 78);
+            this.textBoxPassword.Location = new System.Drawing.Point(248, 96);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(167, 20);
+            this.textBoxPassword.Size = new System.Drawing.Size(221, 22);
             this.textBoxPassword.TabIndex = 4;
             this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // buttonStart
             // 
             this.buttonStart.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonStart.Location = new System.Drawing.Point(266, 112);
+            this.buttonStart.Location = new System.Drawing.Point(355, 138);
+            this.buttonStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(87, 23);
+            this.buttonStart.Size = new System.Drawing.Size(116, 28);
             this.buttonStart.TabIndex = 0;
             this.buttonStart.Text = "Start";
             this.buttonStart.UseVisualStyleBackColor = true;
@@ -119,9 +127,10 @@
             // buttonExit
             // 
             this.buttonExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonExit.Location = new System.Drawing.Point(186, 112);
+            this.buttonExit.Location = new System.Drawing.Point(248, 138);
+            this.buttonExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(74, 23);
+            this.buttonExit.Size = new System.Drawing.Size(99, 28);
             this.buttonExit.TabIndex = 1;
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
@@ -129,28 +138,31 @@
             // 
             // textBoxStatus
             // 
-            this.textBoxStatus.Location = new System.Drawing.Point(15, 152);
+            this.textBoxStatus.Location = new System.Drawing.Point(20, 187);
+            this.textBoxStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxStatus.Multiline = true;
             this.textBoxStatus.Name = "textBoxStatus";
             this.textBoxStatus.ReadOnly = true;
             this.textBoxStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxStatus.Size = new System.Drawing.Size(338, 268);
+            this.textBoxStatus.Size = new System.Drawing.Size(449, 329);
             this.textBoxStatus.TabIndex = 5;
             // 
             // textBoxLoginStatus
             // 
-            this.textBoxLoginStatus.Location = new System.Drawing.Point(15, 114);
+            this.textBoxLoginStatus.Location = new System.Drawing.Point(20, 140);
+            this.textBoxLoginStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLoginStatus.Name = "textBoxLoginStatus";
             this.textBoxLoginStatus.ReadOnly = true;
-            this.textBoxLoginStatus.Size = new System.Drawing.Size(164, 20);
+            this.textBoxLoginStatus.Size = new System.Drawing.Size(217, 22);
             this.textBoxLoginStatus.TabIndex = 6;
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(223, 431);
+            this.linkLabel1.Location = new System.Drawing.Point(297, 530);
+            this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(130, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(163, 17);
             this.linkLabel1.TabIndex = 7;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "http://megadesktop.com/";
@@ -158,9 +170,10 @@
             // 
             // buttonFeedback
             // 
-            this.buttonFeedback.Location = new System.Drawing.Point(15, 426);
+            this.buttonFeedback.Location = new System.Drawing.Point(20, 524);
+            this.buttonFeedback.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonFeedback.Name = "buttonFeedback";
-            this.buttonFeedback.Size = new System.Drawing.Size(109, 23);
+            this.buttonFeedback.Size = new System.Drawing.Size(145, 28);
             this.buttonFeedback.TabIndex = 8;
             this.buttonFeedback.Text = "Feedback";
             this.buttonFeedback.UseVisualStyleBackColor = true;
@@ -169,10 +182,10 @@
             // Form1
             // 
             this.AcceptButton = this.buttonStart;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonExit;
-            this.ClientSize = new System.Drawing.Size(368, 461);
+            this.ClientSize = new System.Drawing.Size(488, 558);
             this.Controls.Add(this.buttonFeedback);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.textBoxLoginStatus);
@@ -188,11 +201,13 @@
             this.Controls.Add(this.textBoxFolder);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(384, 500);
-            this.MinimumSize = new System.Drawing.Size(384, 500);
+            this.MaximumSize = new System.Drawing.Size(506, 605);
+            this.MinimumSize = new System.Drawing.Size(506, 605);
             this.Name = "Form1";
             this.Text = "Mega Sync Beta";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
