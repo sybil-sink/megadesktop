@@ -142,6 +142,10 @@ li { margin-bottom: .5em}
 {
 	font-weight: 300;
 	line-height: 1.2em;
-	padding: 4.5em 1em 0 1em;
+	padding: 0.2em 1em 0 1em;
 }
+
+    .cop div .first {
+        	padding: 4em 1em 0 1em;
+    }
 .cop div a{color: #fff}
