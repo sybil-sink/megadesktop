@@ -55,7 +55,7 @@ namespace MegaWpf
 
             try
             {
-                if (e.Result.StartsWith("MD_VER:") && e.Result.Trim().Substring(6) != GoogleAnalytics.AppVersion)
+                if (e.Result.StartsWith("MD_VER:") && e.Result.Trim().Substring(7) != GoogleAnalytics.AppVersion)
                 {
                     Invoke(() =>
                     {
