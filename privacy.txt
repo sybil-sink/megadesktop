@@ -1,0 +1,25 @@
+Mega Desktop Privacy Policy
+
+1. This app saves your MEGA login and password on your computer, 
+encrypted by your Windows' password.
+
+2. When runs, it sends an anonymous Installation ID,
+so we can see how much users we have and what versions they installed.
+The Installation ID is a MD5 cryptographic hash of computer name+user name.
+We cannot recover your name from it.
+Also, it downloads the update.txt from website to see if a new version is available.
+
+3. If an unexpected error occurs, app will send the Error Code to us, 
+so we can track errors.
+
+4. Your IP address is NOT made available to us in either case.
+However, Google Analytics and Github will probably have it in their logs.
+
+If you are still not satisfied, you can download the source code from Github, 
+remove the error reporting and update checks and compile it yourself.
+
+Please also contact us and explain how we can improve this part of the app.
+
+Thanks!
+
+-- The Mega Desktop Team
