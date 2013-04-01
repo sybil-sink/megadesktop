@@ -13,7 +13,7 @@ The synch needs more testing though. [Follow us](https://twitter.com/Mega_Deskto
 - [.NET API](https://github.com/sybil-sink/mega-sdk)
 
 ### Download
-http://megadesktop.com/files/Install-Mega-Desktop-v0.71b.exe (BETA!)
+http://megadesktop.com/files/Install-Mega-Desktop-v0.75b.exe (BETA!)
 
 ### Contact
 [UserVoice](http://megadesktop.uservoice.com/forums/191321-general) | team@megadesktop.com | [@Mega_Desktop](https://twitter.com/Mega_Desktop)
