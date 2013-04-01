@@ -1,0 +1,36 @@
+Mar 08, 2013 
+Version 0.5b - First beta with shitty UI
+
+Available API features:
+* List and delete files and folders
+* Upload and download
+* Anonymous and registered accounts
+* Server-client requests
+
+
+Mar 16, 2013
+Version 0.7b - Introducing the sync feature
+
+* Dropbox-like synchronization allows to create the MEGA-side backup
+* The application is now distributed with an installer to ensure all the libraries needed are present
+* Improved Upload/download manager and arranged the threading workflow
+
+
+Mar 20, 2013
+Version 0.71b - Improving the user experience
+
+* Added the error reporting
+* Now the application will check for updates
+* Fixed memory overconsumption when uploading big files
+
+
+Mar 30, 2013
+Version 0.75b - The remastered sync
+
+* Added even more stability and prudence to the sync mode for your files safety
+* Fixed the password checking issue on several accounts
+* The sync folder got a lovely icon and pinned to the favorites explorer group
+* Fixed a few API bugs concerning the server-client request handling and overall productivity and stability
+
+Stay tuned!
+

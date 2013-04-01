@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using MegaStore;
 
 namespace SyncLib
 {
@@ -26,33 +27,30 @@ namespace SyncLib
 
     public class Sync
     {
-        string localFolder;
-        string remoteFolder;
-        Mega api;
+        
 
         public event EventHandler<ChangeNotificationArgs> ChangePerformed;
         public event EventHandler ProgressChanged;
         public event EventHandler SyncEnded;
         public event EventHandler SyncStarted;
         public event EventHandler<SyncErrorArgs> SyncError;
+
+        string localFolder;
+        string metadataFile;
+        NodeStore remoteStore;
         volatile bool isSyncing;
         System.Timers.Timer syncTimer;
         FileSystemWatcher fsWatcher;
-        MegaProvider remote;
-        string metadataFile;
-        void OnProgressChanged()
+
+        
+        public Sync(string localFolder, Mega api, string remoteFolderName)
         {
-            if (ProgressChanged != null)
-            {
-                ProgressChanged(this, new EventArgs());
-            }
-        }
-        public Sync(string localFolder, string metadataFile, Mega api, string remoteFolderName)
-        {
-            this.metadataFile = metadataFile;
             this.localFolder = localFolder;
-            remoteFolder = remoteFolderName;
-            this.api = api;
+            var metadataFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MegaDesktop");
+            Directory.CreateDirectory(metadataFolder);
+            metadataFile = Path.Combine(metadataFolder, "files.metadata");
+
+            remoteStore = new NodeStore(api, "sync");
 
             InitTimer();
             InitWatcher(localFolder);
@@ -63,11 +61,10 @@ namespace SyncLib
             syncTimer = new System.Timers.Timer
             {
                 AutoReset = false,
-                Interval = 1500,
+                Interval = 1500                
             };
             syncTimer.Elapsed += (s, e) => Synchronize();
         }
-
         private void InitWatcher(string rootFolder)
         {
             fsWatcher = new FileSystemWatcher(rootFolder);
@@ -75,43 +72,51 @@ namespace SyncLib
             fsWatcher.Renamed += WatcherHandler;
             fsWatcher.Created += WatcherHandler;
             fsWatcher.Deleted += WatcherHandler;
-            fsWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName;
+            fsWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
             fsWatcher.IncludeSubdirectories = true;
         }
         private void WatcherHandler(object sender, FileSystemEventArgs e)
         {
-            if (isHidden(e.FullPath)) { return; }
+            if (SkipChange(e)) { return; }
             syncTimer.Stop();
             syncTimer.Start();
         }
 
-        bool isHidden(string path)
+        // do not fire on hidden files/folders, empty files
+        // but always on delete
+        bool SkipChange(FileSystemEventArgs e)
         {
-            var attr = new FileInfo(path).Attributes;
-            return (attr & FileAttributes.Hidden) == FileAttributes.Hidden;
-        }
-        void local_AppliedChange(object sender, AppliedChangeEventArgs args)
-        {
-            var isLocal = sender.GetType() == typeof(FileSyncProvider);
-            switch (args.ChangeType)
+            if (e.ChangeType == WatcherChangeTypes.Deleted) 
             {
-                case ChangeType.Create:
-                    Notify(String.Format("Created File: {0}...", args.NewFilePath), isLocal);
-                    break;
-                case ChangeType.Delete:
-                    Notify(String.Format("Deleted File: {0}...", args.OldFilePath), isLocal);
-                    break;
-                case ChangeType.Rename:
-                    Notify(String.Format("Renamed File: {0} to {1}...", args.OldFilePath, args.NewFilePath), isLocal);
-                    break;
-                case ChangeType.Update:
-                    Notify(String.Format("Updated File: {0}...", args.NewFilePath), isLocal);
-                    break;
+                return false;
+            }
+            var path = e.FullPath;
+            var fi = new FileInfo(path);
+            var attr = fi.Attributes;
+
+            if ((attr & FileAttributes.Hidden) == FileAttributes.Hidden) { return true; }
+            if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+            {
+                return false;
+                // disables the file\folder creation so turned off
+                //return (e.ChangeType == WatcherChangeTypes.Changed);
+            }
+            else
+            {
+                return fi.Length == 0;
             }
 
         }
-
-        private void Notify(string p, bool isLocal)
+        
+        
+        void OnProgressChanged()
+        {
+            if (ProgressChanged != null)
+            {
+                ProgressChanged(this, new EventArgs());
+            }
+        }
+        private void OnChangePerformed(string p, bool isLocal)
         {
             if (ChangePerformed != null)
             {
@@ -130,76 +135,129 @@ namespace SyncLib
                 SyncError(this, new SyncErrorArgs { Exception = e, Message = message });
             }
         }
-        private void Synchronize()
+
+        object startSyncLock = new object();
+        volatile bool changesWhileSync = false;
+        private void Synchronize(bool startFromScratch = false)
         {
-            if (isSyncing) { return; }
-            isSyncing = true;
+            lock (startSyncLock)
+            {
+                if (isSyncing) { changesWhileSync = true; return; }
+                isSyncing = true;
+                changesWhileSync = false;
+            }
             if (SyncStarted != null) { SyncStarted(this, null); }
-            FileSyncProvider fileProvider = null;
-            try
+
+            if (startFromScratch)
             {
-                fileProvider = new FileSyncProvider(
-                    localFolder,
-                    new FileSyncScopeFilter(), 
-                    FileSyncOptions.RecycleDeletedFiles| FileSyncOptions.RecycleConflictLoserFiles,
-                    Path.GetDirectoryName(metadataFile),
-                    Path.GetFileName(metadataFile),
-                    Path.GetTempPath(), 
-                    null
-                    );
-            }
-            catch (Exception e)
-            {
-                OnError("Could not initialize the FileSyncProvider. Check the sync framework install", e);
-                return;
-            }
-            fileProvider.AppliedChange += local_AppliedChange;
-            if (remote == null)
-            {
-                try
+                if (File.Exists(metadataFile))
                 {
-                    remote = new MegaProvider(api, remoteFolder);
-                    remote.ChangePerformed += (s, e) => Notify(e.Message, false);
-                    remote.ChangeError += (s, e) => Notify("Error: " + e.Message, false);
-                    remote.ProgressChanged += (s, e) => OnProgressChanged();
-                }
-                catch (Exception e)
-                {
-                    OnError("Could not initialize the MegaProvider. Check the sync framework install", e);
-                    return;
+                    File.Delete(metadataFile);
                 }
             }
+            var fileProvider = new FileSyncProvider(
+                localFolder,
+                new FileSyncScopeFilter(),
+                FileSyncOptions.RecycleDeletedFiles | FileSyncOptions.RecycleConflictLoserFiles,
+                Path.GetDirectoryName(metadataFile),
+                Path.GetFileName(metadataFile),
+                Path.GetTempPath(),
+                null
+                );
+            fileProvider.AppliedChange += (s, e) => AppliedChange(s, e.ChangeType, e.OldFilePath, e.NewFilePath);
+            fileProvider.SkippedChange += (s, e) => { var t = e; };
+
+            var remote = new MegaKnowledgeProvider(remoteStore);
+            if (startFromScratch)
+            {
+                remote.ResetDatabase();
+            }
+
+            remote.AppliedChange += (s, e) => AppliedChange(s, e.ChangeType, e.OldFilePath, e.NewFilePath);
+            // do we need this?
+            remote.DestinationCallbacks.ItemConstraint += (s, e) => 
+            { 
+                e.SetResolutionAction(ConstraintConflictResolutionAction.SkipChange);
+            };
+            remote.DestinationCallbacks.ItemConflicting += (s, e) => { e.SetResolutionAction(ConflictResolutionAction.Merge); };
+
             try
             {
                 var agent = new SyncOrchestrator();
                 agent.RemoteProvider = remote;
                 agent.Direction = SyncDirectionOrder.UploadAndDownload;
                 agent.LocalProvider = fileProvider;
-                agent.Synchronize();
+                var status = agent.Synchronize();
+                remoteStore.CleanTemp();
+                if (remote.NeedResync)
+                {
+                    syncTimer.Stop();
+                    syncTimer.Start();
+                }
             }
             catch (Exception e)
             {
-                OnError("Synchronization error", e);
-                remote.ResetState();
+                remote.ResetDatabase();
+                if (File.Exists(metadataFile))
+                {
+                    File.Delete(metadataFile);
+                }
+                OnError("Sync has encountered a severe problem. Trying to resync from scratch...", e);
+                syncTimer.Stop();
+                syncTimer.Start();
             }
             finally
             {
-                isSyncing = false;
                 fileProvider.Dispose();
+                remote = null;
+                lock (startSyncLock)
+                {
+                    if (changesWhileSync)
+                    {
+                        syncTimer.Stop();
+                        syncTimer.Start();
+                    }
+                    isSyncing = false;
+                }
                 if (SyncEnded != null) { SyncEnded(this, null); }
             }
 
         }
-
-        public void StartSyncing()
+        void AppliedChange(object sender, ChangeType type, string oldPath, string newPath)
         {
-            api.ServerRequest += (s, e) => { syncTimer.Stop(); syncTimer.Start(); };
+            var isLocal = sender.GetType() == typeof(FileSyncProvider);
+            switch (type)
+            {
+                case ChangeType.Create:
+                    OnChangePerformed(String.Format("Created {0}", newPath), isLocal);
+                    break;
+                case ChangeType.Delete:
+                    OnChangePerformed(String.Format("Deleted {0}", oldPath), isLocal);
+                    break;
+                case ChangeType.Rename:
+                    OnChangePerformed(String.Format("Renamed {0} to {1}", oldPath, newPath), isLocal);
+                    break;
+                case ChangeType.Update:
+                    OnChangePerformed(String.Format("Updated {0}", newPath), isLocal);
+                    break;
+            }
+
+        }
+
+        public void StartSyncing(bool startFromScratch = false)
+        {
+            remoteStore.Updated += (s, e) => { syncTimer.Stop(); syncTimer.Start(); };
             fsWatcher.EnableRaisingEvents = true;
+            remoteStore.EnableRaisingEvents = true;
             Util.StartThread(() =>
             {
                 try
                 {
-                    Synchronize();
+                    Synchronize(startFromScratch);
+                }
+                catch (System.Runtime.InteropServices.COMException e)
+                {
+                    OnError("Please reinstall Mega Desktop - The required Sync Framework libraries cannot be found.", e);
                 }
                 catch (FileNotFoundException e)
                 {
@@ -209,7 +267,7 @@ namespace SyncLib
                 {
                     OnError("Internal sync error", e);
                 }
-            }, "mega_sync");
+            }, "mega_sync_start");
         }
     }
 }

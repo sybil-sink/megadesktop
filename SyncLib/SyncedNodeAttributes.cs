@@ -7,7 +7,7 @@ namespace SyncLib
 {
     class SyncedNodeAttributes
     {
-        public string Name { get; set; }
+        public string Path { get; set; }
         public string Id { get; set; }
     }
 }

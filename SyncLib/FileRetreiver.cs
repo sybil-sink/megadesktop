@@ -27,18 +27,7 @@ namespace SyncLib
             {
                 return getStreamFn();
             }
-            //{
-            //    if (FileData.IsDirectory) { return null; }
-            //    return GetStream();
-            //}
-            //set;
         }
-
-        private Stream GetStream()
-        {
-            throw new NotImplementedException();
-        }
-
         public string RelativeDirectoryPath { get; set; }
     }
 }
