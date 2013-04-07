@@ -158,6 +158,7 @@ li { margin-bottom: .5em}
 }
 .donate a
 {
+	color: #fff;
 	background-color: #D89000;
     padding: 10px 15px;
     text-decoration: none;
