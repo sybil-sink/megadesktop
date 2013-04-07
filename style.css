@@ -148,3 +148,18 @@ li { margin-bottom: .5em}
         	padding: 4em 1em 0 1em;
     }
 .cop div a{color: #fff}
+
+.donate
+{
+    font-size: 1.5em;
+    margin-top: -3px;
+    padding: 25px;
+    text-align: center;
+}
+.donate a
+{
+	background-color: #D89000;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+.donate a:hover{text-decoration: underline;}
