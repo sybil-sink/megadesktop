@@ -46,7 +46,7 @@ body {
 	color: #fff;
 }
 img, a {outline: none}
-.content {width: 750px; margin: 100px auto 125px auto; background:#0A0A0B;}
+.content {width: 750px; margin: 100px auto; background:#0A0A0B;}
 .cb {clear: both}
 .sq {height: 250px; width: 250px; float: left;}
 .sq2 {height: 50%; width: 50%; float: left;}
