@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -27,6 +27,8 @@ namespace MegaWpf
         ObservableCollection<TransferHandle> transfers = new ObservableCollection<TransferHandle>();
         MegaNode currentNode;
         static string title = "Mega Desktop (beta)";
+        System.Windows.Forms.NotifyIcon MEGAicon = new System.Windows.Forms.NotifyIcon();
+
         public MainWindow()
         {
             CheckTos();
@@ -38,8 +40,8 @@ namespace MegaWpf
             var userAccountFile = GetUserKeyFilePath();
             Login(save, userAccountFile);
             
-            var MEGAicon = new System.Windows.Forms.NotifyIcon {Icon = MegaDesktop.Properties.Resources.m, Visible = true};
-            
+            MEGAicon.Icon = MegaDesktop.Properties.Resources.m;
+            MEGAicon.Visible = true;            
         }
 
         private void UpdateCheck()
