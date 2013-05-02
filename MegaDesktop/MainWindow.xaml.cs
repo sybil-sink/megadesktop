@@ -37,6 +37,9 @@ namespace MegaWpf
             var save = false;
             var userAccountFile = GetUserKeyFilePath();
             Login(save, userAccountFile);
+            
+            var MEGAicon = new System.Windows.Forms.NotifyIcon {Icon = MegaDesktop.Properties.Resources.m, Visible = true};
+            
         }
 
         private void UpdateCheck()
